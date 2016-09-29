@@ -21,7 +21,7 @@ public class UsuarioDAO implements iUsuarioDAO {
 	}
 
 	@Override
-	public void inserir(Usuario u) {
+	public void inserir(Usuario u){
 
 		try (Connection con = DriverManager.getConnection(crud.address, crud.getDbUser().getLogin(),
 				crud.getDbUser().getSenha())) {
@@ -35,6 +35,7 @@ public class UsuarioDAO implements iUsuarioDAO {
 			stm.executeUpdate();
 		} catch (SQLException ex) {
 			System.out.println("Ocorreu um erro no CRUD" + ex);
+                        
 		}
 		System.out.println("Usuario Criado com Sucesso!");
 	}
@@ -53,6 +54,7 @@ public class UsuarioDAO implements iUsuarioDAO {
 			}
 		} catch (SQLException ex) {
 			System.out.println("Ocorreu um erro no CRUD" + ex);
+                        return null;
 		}
 		return null;
 	}

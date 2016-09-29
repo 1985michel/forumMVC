@@ -15,12 +15,12 @@
         <link rel="stylesheet" type="text/css" href="myCss.css">
 
 
-        <title>JSP Page</title>
+        <title>Login</title>
     </head>
     <body>
         <div class="container-fluid" style="padding-top: 3%;">
             <div id="logoMaster" class="container-fluid text-center" style="">
-                <h1><sub><b class="lobster"><a href="">Fórum MVC</a></b></sub><small><br><b class="text-uppercase"><sup>My First Java Web Project</sup></b></small></h1>
+                <h2><sub><b class="lobster"><a href="">Fórum MVC</a></b></sub><small><br><b class="text-uppercase"><sup>My First Java Web Project</sup></b></small></h2>
             </div>
             <p></p>
             <div class="row" style="padding-top: 10%;">
@@ -32,7 +32,7 @@
                             <input type="password" name="senha" placeholder="senha" class="form-control text-center" />
                             <input type="submit" value="Logar" class="btn btn-primary btn-lg btn-block" />
                         </form>
-                        <form class="text-center">
+                        <form class="text-center" action="cadastrarUsuario.jsp">
                             <input type="submit" value="Novo Usuário" class="btn btn-default btn-lg btn-block" />
                         </form>
                     </div>
@@ -40,7 +40,7 @@
 
                     <%
                         if (request.getAttribute("erro") != null) {
-                            out.println("<div style='background-color:#DE5448; padding:10px;' class='text-center'>"
+                            out.println("<div style='background-color:#FF7145; padding:10px;' class='text-center'>"
                                     + "<b><p1 >" + request.getAttribute("erro") + "</p1></b>"
                                     + "</div>");
                         }

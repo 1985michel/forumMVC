@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="C" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,6 @@
         <title>Falha...</title>
     </head>
     <body>
-        <h1>Nâo foi possível logar!</h1>
+        <h1>Nâo foi possível logar! ${erro}</h1>
     </body>
 </html>
