@@ -4,8 +4,14 @@
     Author     : michel
 --%>
 
+<%@page import="model.ListadoraDeTopicos"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Topico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="C" uri="http://java.sun.com/jstl/core_rt" %>
+<jsp:useBean id="dao" class="model.Topico"/>
+<jsp:useBean id="listadora" class="model.ListadoraDeTopicos"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,29 +35,51 @@
                     </div>
                     <p></p>
                     <div style="padding-top: 30%;">
-                        
-                            
+
+
                         <div class="form-group center-block" style="background-color:#124989; padding:10px;">
-                            
-                            
-                            
+
+                            <h5 class="text-center"><sub><b class="lobster"><a href="">Cadastrar Tópico</a></b></sub><small><br><b class="text-uppercase"></b></small></h5>
+
+                            <table style="color:white" class="text-center">
+                                <tr class="text-center">
+                                    <th>Tópico nº</th>
+                                    <th>Título do Tópico</th>
+                                    <th>Criador</th>    
+                                </tr>
+                                <tr>
+                                    <%
+                                        // ...
+                                        List<Topico> listaTopicos = listadora.getTodosTopicos();
+                                        for (Topico t : listaTopicos) {
+                                            out.println("<tr class='text-center'>"
+                                                    + "<td >" + t.getId_topico() + "</td> "
+                                                    + "<td>" + t.getTitulo() + "</td> "
+                                                    + "<td>" + t.getLogin() + "</td> "
+                                                    + "</tr>");
+                                        }
+                                    %>
+
+                                </tr>
+                            </table>
+                            <div class="btn-group btn-group-justified" role="group" style="background-color:#124989; padding:10px;">
+
+                                <div class="btn-group" role="group">
+                                    <a href="telaInsereTopico.jsp"><input type="button" value="Criar Tópico" class="btn btn-primary " /></a>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <input type="button" value="Ver Ranking" class="btn btn-default " />
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
-
-                    <%
-                        if (request.getAttribute("erro") != null) {
-                            out.println("<div style='background-color:#DE5448; padding:10px;' class='text-center'>"
-                                    + "<b><p1 >" + request.getAttribute("erro") + "</p1></b>"
-                                    + "</div>");
-                        }
-
-                    %>
-
-
-
                 </div>
             </div>
         </div>
+
+
 
 
 

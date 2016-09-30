@@ -52,7 +52,7 @@ public class cadastrarTopicoServlet extends HttpServlet {
         try{
            CadastradoraDeTopicos.cadastrarTopico(conteudo, titulo, login);
            //CadastradoraDeTopicos.cadastrarTopico("MICHEL", "titulo2", "MICHEL");
-           request.getRequestDispatcher("sucessoNoLogin.jsp").forward(request, response);
+           request.getRequestDispatcher("telaTopicos.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Falha: " + e);
             request.setAttribute("erro", e.getMessage());

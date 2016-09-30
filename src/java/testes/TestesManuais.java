@@ -5,9 +5,12 @@
  */
 package testes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CadastradoraDeTopicos;
+import model.*;
 
 /**
  *
@@ -17,11 +20,16 @@ public class TestesManuais {
     
     public static void main(String... args){
         
-        
+         List<Topico> lista = new ArrayList<>();
         try {
-            CadastradoraDeTopicos.cadastrarTopico("MICHEL", "titulo", "MICHEL");
+            lista = ListadoraDeTopicos.getTodosTopicos();
         } catch (Exception ex) {
-            Logger.getLogger(TestesManuais.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
+        
+        for(Topico t : lista){
+            System.out.println(t.getTitulo());
+        }
+        
     }
 }

@@ -35,7 +35,10 @@ public class LoginServlet extends HttpServlet {
             if (Logadora.autenticar(login, senha)) {
                 //colocando o login ativo na sessão
                 request.getSession().setAttribute("loginAtivo", login);
-                request.getRequestDispatcher("telaInsereTopico.jsp").forward(request, response);
+                //request.getRequestDispatcher("telaInsereTopico.jsp").forward(request, response);
+                request.getRequestDispatcher("telaTopicos.jsp").forward(request, response);
+
+
             } else {
                 request.setAttribute("erro", ERRO_AO_LOGAR);
                 request.getRequestDispatcher("telaLogin.jsp").forward(request, response);

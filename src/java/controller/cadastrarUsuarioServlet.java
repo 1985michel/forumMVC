@@ -49,7 +49,7 @@ public class cadastrarUsuarioServlet extends HttpServlet {
         try{
            CadastradoraDeUsuarios.cadastrarUsuario(login, nome, email, senha);
            
-           request.getRequestDispatcher("sucessoNoLogin.jsp").forward(request, response);
+           request.getRequestDispatcher("telaTopicos.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Falha: " + e);
             request.setAttribute("erro", e.getMessage());

@@ -12,18 +12,19 @@ import static model.CadastradoraDeUsuarios.isLoginDisponivel;
  * @author michel
  */
 public class CadastradoraDeTopicos {
-    
-      public static void cadastrarTopico(String login,String titulo,String conteudo) throws Exception {
 
-        
+    public static void cadastrarTopico(String login, String titulo, String conteudo) throws Exception {
+
         try {
-             CRUD crud = new CRUD(new DbUser("postgres", "livre01"));
-             new TopicoDAO(crud).inserir(new Topico(login, titulo, conteudo));     
-            
+            // CRUD crud = new CRUD(new DbUser("postgres", "livre01"));
+            new TopicoDAO().inserir(new Topico(login, titulo, conteudo));
+
+           // new TopicoDAO(crud).inserir(new Topico(login, titulo, conteudo));
+
         } catch (Exception e) {
             throw new Exception("Erro. Tópico não cadastrado.");
-            
+
         }
     }
-    
+
 }
