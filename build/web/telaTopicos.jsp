@@ -39,28 +39,29 @@
 
                         <div class="form-group center-block" style="background-color:#124989; padding:10px;">
 
-                            <h5 class="text-center"><sub><b class="lobster"><a href="">Cadastrar Tópico</a></b></sub><small><br><b class="text-uppercase"></b></small></h5>
+                            <h5 class="text-center"><sub><b class="lobster"><a href="">Tópicos</a></b></sub><small><br><b class="text-uppercase"></b></small></h5>
 
                             <table style="color:white" class="text-center">
                                 <tr class="text-center">
                                     <th>Tópico nº</th>
                                     <th>Título do Tópico</th>
                                     <th>Criador</th>    
-                                </tr>
-                                <tr>
-                                    <%
-                                        // ...
-                                        List<Topico> listaTopicos = listadora.getTodosTopicos();
-                                        for (Topico t : listaTopicos) {
-                                            out.println("<tr class='text-center'>"
-                                                    + "<td >" + t.getId_topico() + "</td> "
-                                                    + "<td>" + t.getTitulo() + "</td> "
-                                                    + "<td>" + t.getLogin() + "</td> "
-                                                    + "</tr>");
-                                        }
-                                    %>
+                                </tr>                               
 
-                                </tr>
+                                <%
+                                    // ...
+                                    List<Topico> listaTopicos = listadora.getTodosTopicos();
+                                    for (Topico t : listaTopicos) {
+                                        out.println("<tr><td >" + t.getId_topico() + "</td> "
+                                                + "<td><a href='/ForumMVC/exibeTopicos?topico="
+                                                +t.getId_topico() +"'> "
+                                                + t.getTitulo()
+                                                + "</a></td> "
+                                                + "<td>" + t.getLogin() + "</td></tr>");
+                                    }
+                                %>
+
+
                             </table>
                             <div class="btn-group btn-group-justified" role="group" style="background-color:#124989; padding:10px;">
 
@@ -78,6 +79,12 @@
                 </div>
             </div>
         </div>
+
+        <form class="text-center" action="exibeTopicos">
+            <input type="text" name="topico" placeholder="id" class="form-control text-center" />
+            <input type="submit" value="teste" class="btn btn-default btn-lg btn-block" />
+        </form>
+
 
 
 

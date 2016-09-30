@@ -3,12 +3,14 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import model.ComentarioDAO;
+import model.Comentario;
 import model.ListadoraDeTopicos;
 import java.util.ArrayList;
 import java.util.List;
 import model.Topico;
 
-public final class telaTopicos_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -53,11 +55,13 @@ public final class telaTopicos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      model.Topico dao = null;
+      out.write("\n");
+      out.write("\n");
+      model.ComentarioDAO dao = null;
       synchronized (_jspx_page_context) {
-        dao = (model.Topico) _jspx_page_context.getAttribute("dao", PageContext.PAGE_SCOPE);
+        dao = (model.ComentarioDAO) _jspx_page_context.getAttribute("dao", PageContext.PAGE_SCOPE);
         if (dao == null){
-          dao = new model.Topico();
+          dao = new model.ComentarioDAO();
           _jspx_page_context.setAttribute("dao", dao, PageContext.PAGE_SCOPE);
         }
       }
@@ -80,7 +84,7 @@ public final class telaTopicos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"myCss.css\">\n");
       out.write("\n");
       out.write("\n");
-      out.write("        <title>Cadastrar Tópico</title>\n");
+      out.write("        <title>Exibe Tópico</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div class=\"container-fluid\" style=\"padding-top: 1%;\">\n");
@@ -98,38 +102,67 @@ public final class telaTopicos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                        <div class=\"form-group center-block\" style=\"background-color:#124989; padding:10px;\">\n");
       out.write("\n");
-      out.write("                            <h5 class=\"text-center\"><sub><b class=\"lobster\"><a href=\"\">Tópicos</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h5>\n");
       out.write("\n");
-      out.write("                            <table style=\"color:white\" class=\"text-center\">\n");
-      out.write("                                <tr class=\"text-center\">\n");
-      out.write("                                    <th>Tópico nº</th>\n");
-      out.write("                                    <th>Título do Tópico</th>\n");
-      out.write("                                    <th>Criador</th>    \n");
-      out.write("                                </tr>                               \n");
+      out.write("                            <div class=\"panel panel-default\">\n");
+      out.write("                                <!-- Default panel contents -->\n");
+      out.write("                                <div class=\"panel-heading\">                            \n");
+      out.write("                                    <h6 class=\"text-center\"><sub><b class=\"lobster\"><a href=\"\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${titulo}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" por ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${login}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h6>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"panel-body\">\n");
+      out.write("                                    <table style=\"color:black\" class=\"text-center\">\n");
+      out.write("                                        <tr class=\"text-center\">\n");
+      out.write("                                            <th>Usuário</th>\n");
+      out.write("                                            <th>Comentário</th>\n");
       out.write("\n");
-      out.write("                                ");
+      out.write("                                        </tr>\n");
+      out.write("                                        <tr>\n");
+      out.write("                                            ");
 
-                                    // ...
-                                    List<Topico> listaTopicos = listadora.getTodosTopicos();
-                                    for (Topico t : listaTopicos) {
-                                        out.println("<tr><td >" + t.getId_topico() + "</td> "
-                                                + "<td><a href='/ForumMVC/exibeTopicos'> "
-                                                + t.getTitulo()
-                                                + "</a></td> "
-                                                + "<td>" + t.getLogin() + "</td></tr>");
-                                    }
-                                
+                                                
+                                                
+
+                                                List<Comentario> lista = new ArrayList<>();
+
+                                                lista = dao.getTodosComentariosDeUmTopico(4);
+
+                                                for (Comentario c : lista) {
+                                                    out.println("<tr class='text-center'>"
+                                                            + "<td ><b>" + c.getLogin() + "</b></td> "
+                                                            + "<td>" + c.getComentario() + "</td> "
+                                                            + "</tr>");
+                                                }
+                                                   
+
+                                            
       out.write("\n");
       out.write("\n");
+      out.write("                                        </tr>\n");
       out.write("\n");
-      out.write("                            </table>\n");
+      out.write("                                    </table>\n");
+      out.write("                                    <div class=\"form-group\" style=\"background-color:#124989; padding:10px;\">\n");
+      out.write("\n");
+      out.write("                                        <form class=\"center-block\" method=\"post\" action=\"criarTopico\">\n");
+      out.write("                                            <h5 class=\"\"><sub><b class=\"lobster\">Comentar</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h5>\n");
+      out.write("\n");
+      out.write("                                            ​<textarea id=\"conteudo\" rows=\"10\" cols=\"70\" name=\"conteudo\" placeholder=\"Deixe aqui seu comentário\" class=\"form-control text-center\"></textarea>\n");
+      out.write("                                            <input type=\"submit\" value=\"Enviar comentário\" class=\"btn btn-primary btn-lg btn-block\" />\n");
+      out.write("                                        </form>\n");
+      out.write("\n");
+      out.write("                                    </div>\n");
+      out.write("                                </div>\n");
+      out.write("\n");
+      out.write("                            </div>\n");
       out.write("                            <div class=\"btn-group btn-group-justified\" role=\"group\" style=\"background-color:#124989; padding:10px;\">\n");
       out.write("\n");
       out.write("                                <div class=\"btn-group\" role=\"group\">\n");
-      out.write("                                    <a href=\"telaInsereTopico.jsp\"><input type=\"button\" value=\"Criar Tópico\" class=\"btn btn-primary \" /></a>\n");
+      out.write("                                    <a href=\"telaInsereComentario.jsp\"><input type=\"button\" value=\"Comentar\" class=\"btn btn-primary \" /></a>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"btn-group\" role=\"group\">\n");
-      out.write("                                    <input type=\"button\" value=\"Ver Ranking\" class=\"btn btn-default \" />\n");
+      out.write("                                    <a href=\"telaTopicos.jsp\"><input type=\"button\" value=\"Ranking\" class=\"btn btn-default \" /></a>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
       out.write("\n");
@@ -139,12 +172,6 @@ public final class telaTopicos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("\n");
-      out.write("        <form class=\"text-center\" action=\"exibeTopicos\">\n");
-      out.write("            <input type=\"text\" name=\"topico\" placeholder=\"id\" class=\"form-control text-center\" />\n");
-      out.write("            <input type=\"submit\" value=\"teste\" class=\"btn btn-default btn-lg btn-block\" />\n");
-      out.write("        </form>\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

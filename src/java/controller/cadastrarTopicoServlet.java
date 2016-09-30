@@ -50,7 +50,7 @@ public class cadastrarTopicoServlet extends HttpServlet {
         
         
         try{
-           CadastradoraDeTopicos.cadastrarTopico(conteudo, titulo, login);
+           CadastradoraDeTopicos.cadastrarTopico(titulo, conteudo, login);
            //CadastradoraDeTopicos.cadastrarTopico("MICHEL", "titulo2", "MICHEL");
            request.getRequestDispatcher("telaTopicos.jsp").forward(request, response);
         } catch (Exception e) {

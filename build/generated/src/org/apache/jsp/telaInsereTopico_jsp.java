@@ -76,7 +76,7 @@ public final class telaInsereTopico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                <h5 class=\"text-center\"><sub><b class=\"lobster\"><a href=\"\">Cadastrar Tópico</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h5>\n");
       out.write("\n");
       out.write("                                <input type=\"text\" name=\"titulo\" placeholder=\"Título do Tópico\" class=\"form-control text-center\" />\n");
-      out.write("                                ​<textarea id=\"txtArea\" rows=\"10\" cols=\"70\" name=\"conteudo\" placeholder=\"Conteúdo do tópico\" class=\"form-control text-center\"></textarea>\n");
+      out.write("                                ​<textarea id=\"conteudo\" rows=\"10\" cols=\"70\" name=\"conteudo\" placeholder=\"Conteúdo do tópico\" class=\"form-control text-center\"></textarea>\n");
       out.write("                                <input type=\"submit\" value=\"Cadastrar\" class=\"btn btn-primary btn-lg btn-block\" />\n");
       out.write("                            </form>\n");
       out.write("                            \n");

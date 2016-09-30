@@ -17,19 +17,14 @@ import model.*;
  * @author michel
  */
 public class TestesManuais {
-    
-    public static void main(String... args){
-        
-         List<Topico> lista = new ArrayList<>();
-        try {
-            lista = ListadoraDeTopicos.getTodosTopicos();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        for(Topico t : lista){
-            System.out.println(t.getTitulo());
-        }
-        
+
+    public static void main(String... args) {
+
+        Topico t = new TopicoDAO().recuperar(9);
+        System.out.println(t.getTitulo());
+        System.out.println(t.getLogin());
+        System.out.println(t.getConteudo());
+        System.out.println(t.getId_topico());
+
     }
 }
