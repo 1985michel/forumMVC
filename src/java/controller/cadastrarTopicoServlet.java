@@ -1,44 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
-import static controller.LoginServlet.ERRO_AO_LOGAR;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletResponse;
-import model.CadastradoraDeUsuarios;
-import model.Logadora;
+import model.CadastradoraDeTopicos;
 
 /**
  *
  * @author michel
  */
-@WebServlet("/cadastrar")
-public class cadastrarUsuarioServlet extends HttpServlet {
-    
-    public static final String ERRO_AO_CADASTRAR = "Erro. Usuário não cadastrado.";
+@WebServlet("/criarTopico")
+public class cadastrarTopicoServlet extends HttpServlet {
+
+    public static final String ERRO_AO_CADASTRAR = "Erro. Tópico não cadastrado.";
     public static final String SUCESSO = "Cadastro Realizado com Sucesso!";
     public static final String ERRO_CAMPO_VAZIO = "Erro. Todos os campos do formulário devem ser informados.";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        
-        String nome = request.getParameter("nome");
-        String email = request.getParameter("email");
-        String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
         
         
-        if(nome==null || email==null || login==null || senha==null){
+        String titulo = request.getParameter("titulo");
+        String conteudo = request.getParameter("conteudo");
+        String login = request.getSession().getAttribute("loginAtivo").toString();
+       
+               
+        if(titulo==null || conteudo==null || login==null){
             request.setAttribute("erro", ERRO_CAMPO_VAZIO);
             request.getRequestDispatcher("falhaNoLogin.jsp").forward(request, response);
             return;
         }
-        if(nome.isEmpty() || email.isEmpty() || login.isEmpty() || senha.isEmpty()){
+        if(titulo.isEmpty() || conteudo.isEmpty() || login.isEmpty()){
             request.setAttribute("erro", ERRO_CAMPO_VAZIO);
             request.getRequestDispatcher("falhaNoLogin.jsp").forward(request, response);
             return;
@@ -47,8 +50,8 @@ public class cadastrarUsuarioServlet extends HttpServlet {
         
         
         try{
-           CadastradoraDeUsuarios.cadastrarUsuario(login, nome, email, senha);
-           
+           CadastradoraDeTopicos.cadastrarTopico(conteudo, titulo, login);
+           //CadastradoraDeTopicos.cadastrarTopico("MICHEL", "titulo2", "MICHEL");
            request.getRequestDispatcher("sucessoNoLogin.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Falha: " + e);

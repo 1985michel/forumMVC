@@ -5,10 +5,10 @@ package model;
  *
  * @author michel
  */
-public class Cadastradora {
+public class CadastradoraDeUsuarios {
 
   
-    public static void cadastrar(String login,String nome,String email, String senha) throws Exception {
+    public static void cadastrarUsuario(String login,String nome,String email, String senha) throws Exception {
 
         if(!isLoginDisponivel(login)){
             throw new Exception("Erro. Este LOGIN já está em uso. Tente outro login.");
@@ -38,6 +38,7 @@ public class Cadastradora {
             return false;
 
         }
-    }
+    }    
+   
 }
 

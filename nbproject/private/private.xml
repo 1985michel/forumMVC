@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/model/Usuario.java</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/model/UsuarioDAO.java</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/controller/cadastrarUsuarioServlet.java</file>
             <file>file:/C:/ITA/workplace/ForumMVC/web/telaLogin.jsp</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/model/Cadastradora.java</file>
             <file>file:/C:/ITA/workplace/ForumMVC/src/java/controller/LoginServlet.java</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/web/cadastrarUsuario.jsp</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/model/Logadora.java</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/web/falhaNoLogin.jsp</file>
         </group>
     </open-files>
 </project-private>
