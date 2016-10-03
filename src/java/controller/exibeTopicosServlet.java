@@ -28,18 +28,19 @@ public class exibeTopicosServlet extends HttpServlet {
 
         //coletando o parameto
         int id_topico = Integer.parseInt(request.getParameter("topico"));
-        
+
         //int id_topico =4;
-        System.out.println("chegou aqui");
-        
+        //System.out.println("chegou aqui");
         //recuperando o topico
         TopicoDAO dao = new TopicoDAO();
         Topico t = dao.recuperar(id_topico);
         request.setAttribute("titulo", t.getTitulo());
-        request.setAttribute("login", t.getLogin());
+        //request.setAttribute("login", t.getLogin());
+        request.getSession().setAttribute("id_topico", id_topico);
+        request.getSession().setAttribute("criador", t.getLogin());
 
         //passar o controller para o view
-        request.getRequestDispatcher("TelaExibeTopico.jsp").forward(request, response);
+        request.getRequestDispatcher("/listaComentarios").forward(request, response);
 
     }
 

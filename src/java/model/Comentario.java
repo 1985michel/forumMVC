@@ -4,10 +4,10 @@ package model;
 
 public class Comentario {
 
-	private int id_comentario;
-	private String comentario;
-	private int id_topico;
-	private String login;
+	public int id_comentario;
+	public String comentario;
+	public int id_topico;
+	public String login;
 	
 	private Comentario(){}
 

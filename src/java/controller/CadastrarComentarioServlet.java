@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Comentario;
+import model.ComentarioDAO;
 
 /**
  *
@@ -21,9 +23,16 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastrarComentarioServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+        int id_topico = Integer.parseInt(request.getSession().getAttribute("id_topico").toString());
+        String comentario = request.getParameter("comentario");
+        String login = request.getSession().getAttribute("loginAtivo").toString();
+        
+        new ComentarioDAO().comentar(new Comentario(comentario, id_topico, login));
+        
+        request.getRequestDispatcher("/listaComentarios").forward(request, response);
         
 
     }

@@ -8,8 +8,8 @@
 <%@page import="model.Topico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="C" uri="http://java.sun.com/jstl/core_rt" %>
-<jsp:useBean id="dao" class="model.ComentarioDAO"/>
-<jsp:useBean id="listadora" class="model.ListadoraDeTopicos"/>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +41,7 @@
                             <div class="panel panel-default">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading">                            
-                                    <h3 class="text-center"><sub><b class=""><a href="">${titulo} <h5>por ${login}</h5></a></b></sub><small><br><b class="text-uppercase"></b></small></h3>
+                                    <h3 class="text-center"><sub><b class=""><a href="">${titulo} <h5>por ${criador}</h5></a></b></sub><small><br><b class="text-uppercase"></b></small></h3>
                                 </div>
                                 <div class="panel-body">
                                     <table style="color:black" class="text-center">
@@ -51,21 +51,40 @@
 
                                         </tr>
                                         <tr>
+
+
+
                                             <%
-                                               
-                                                   
+                                                List<Comentario> lista = new ArrayList<Comentario>();
+                                                if (request.getAttribute("lista") != null) {
+                                                    lista = (List<Comentario>) request.getAttribute("lista");
+                                                }
+
+                                                for (Comentario c : lista) {
+                                                    if (c != null) {
+                                                        out.println("<tr class='text-center'><td>" + c.getLogin() + "</td>"
+                                                                + "<td>" + c.getComentario() + "</td></tr>");
+                                                    }
+                                                }
+
 
                                             %>
+
+
+
+
+
+
 
                                         </tr>
 
                                     </table>
                                     <div class="form-group" style="background-color:#124989; padding:10px;">
 
-                                        <form class="center-block" method="post" action="criarTopico">
+                                        <form class="center-block" method="post" action="comentar">
                                             <h5 class=""><sub><b class="lobster">Comentar</a></b></sub><small><br><b class="text-uppercase"></b></small></h5>
 
-                                            ​<textarea id="conteudo" rows="10" cols="70" name="conteudo" placeholder="Deixe aqui seu comentário" class="form-control text-center"></textarea>
+                                            ​<textarea id="comentario" rows="10" cols="70" name="comentario" placeholder="Deixe aqui seu comentário" class="form-control text-center"></textarea>
                                             <input type="submit" value="Enviar comentário" class="btn btn-primary btn-lg btn-block" />
                                         </form>
 

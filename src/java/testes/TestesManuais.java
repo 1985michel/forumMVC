@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CadastradoraDeTopicos;
 import model.*;
+import org.apache.jasper.tagplugins.jstl.ForEach;
 
 /**
  *
@@ -20,11 +21,11 @@ public class TestesManuais {
 
     public static void main(String... args) {
 
-        Topico t = new TopicoDAO().recuperar(9);
-        System.out.println(t.getTitulo());
-        System.out.println(t.getLogin());
-        System.out.println(t.getConteudo());
-        System.out.println(t.getId_topico());
+        List<Comentario> lista = new ComentarioDAO().getTodosComentariosDeUmTopico(19);
+
+        for (Comentario c : lista) {
+            System.out.println(c.getComentario());
+        }
 
     }
 }

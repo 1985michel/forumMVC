@@ -4,11 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/ITA/workplace/ForumMVC/web/telaTopicos.jsp</file>
-            <file>file:/C:/ITA/workplace/ForumMVC/src/java/controller/cadastrarUsuarioServlet.java</file>
-            <file>file:/C:/ITA/workplace/ForumMVC/web/telaLogin.jsp</file>
-            <file>file:/C:/ITA/workplace/ForumMVC/web/telaInsereTopico.jsp</file>
-            <file>file:/C:/ITA/workplace/ForumMVC/web/cadastrarUsuario.jsp</file>
-            <file>file:/C:/ITA/workplace/ForumMVC/src/java/controller/cadastrarTopicoServlet.java</file>
+            <file>file:/C:/ITA/workplace/ForumMVC/src/java/controller/exibeTopicosServlet.java</file>
         </group>
     </open-files>
 </project-private>

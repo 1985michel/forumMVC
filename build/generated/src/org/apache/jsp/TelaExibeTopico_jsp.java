@@ -57,23 +57,7 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      model.ComentarioDAO dao = null;
-      synchronized (_jspx_page_context) {
-        dao = (model.ComentarioDAO) _jspx_page_context.getAttribute("dao", PageContext.PAGE_SCOPE);
-        if (dao == null){
-          dao = new model.ComentarioDAO();
-          _jspx_page_context.setAttribute("dao", dao, PageContext.PAGE_SCOPE);
-        }
-      }
-      out.write('\n');
-      model.ListadoraDeTopicos listadora = null;
-      synchronized (_jspx_page_context) {
-        listadora = (model.ListadoraDeTopicos) _jspx_page_context.getAttribute("listadora", PageContext.PAGE_SCOPE);
-        if (listadora == null){
-          listadora = new model.ListadoraDeTopicos();
-          _jspx_page_context.setAttribute("listadora", listadora, PageContext.PAGE_SCOPE);
-        }
-      }
+      out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
@@ -106,11 +90,11 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                            <div class=\"panel panel-default\">\n");
       out.write("                                <!-- Default panel contents -->\n");
       out.write("                                <div class=\"panel-heading\">                            \n");
-      out.write("                                    <h6 class=\"text-center\"><sub><b class=\"lobster\"><a href=\"\">");
+      out.write("                                    <h3 class=\"text-center\"><sub><b class=\"\"><a href=\"\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${titulo}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write(" por ");
+      out.write(" <h5>por ");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${login}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h6>\n");
+      out.write("</h5></a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h3>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"panel-body\">\n");
       out.write("                                    <table style=\"color:black\" class=\"text-center\">\n");
@@ -120,24 +104,31 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("                                        </tr>\n");
       out.write("                                        <tr>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("                                            ");
 
-                                                
-                                                
-
-                                                List<Comentario> lista = new ArrayList<>();
-
-                                                lista = dao.getTodosComentariosDeUmTopico(4);
+                                                List<Comentario> lista = new ArrayList<Comentario>();
+                                                if (request.getAttribute("lista") != null) {
+                                                    lista = (List<Comentario>) request.getAttribute("lista");
+                                                }
 
                                                 for (Comentario c : lista) {
-                                                    out.println("<tr class='text-center'>"
-                                                            + "<td ><b>" + c.getLogin() + "</b></td> "
-                                                            + "<td>" + c.getComentario() + "</td> "
-                                                            + "</tr>");
+                                                    if (c != null) {
+                                                        out.println("<tr class='text-center'><td>" + c.getLogin() + "</td>"
+                                                                + "<td>" + c.getComentario() + "</td></tr>");
+                                                    }
                                                 }
-                                                   
+
 
                                             
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("                                        </tr>\n");
@@ -145,10 +136,10 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                                    </table>\n");
       out.write("                                    <div class=\"form-group\" style=\"background-color:#124989; padding:10px;\">\n");
       out.write("\n");
-      out.write("                                        <form class=\"center-block\" method=\"post\" action=\"criarTopico\">\n");
+      out.write("                                        <form class=\"center-block\" method=\"post\" action=\"comentar\">\n");
       out.write("                                            <h5 class=\"\"><sub><b class=\"lobster\">Comentar</a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h5>\n");
       out.write("\n");
-      out.write("                                            ​<textarea id=\"conteudo\" rows=\"10\" cols=\"70\" name=\"conteudo\" placeholder=\"Deixe aqui seu comentário\" class=\"form-control text-center\"></textarea>\n");
+      out.write("                                            ​<textarea id=\"comentario\" rows=\"10\" cols=\"70\" name=\"comentario\" placeholder=\"Deixe aqui seu comentário\" class=\"form-control text-center\"></textarea>\n");
       out.write("                                            <input type=\"submit\" value=\"Enviar comentário\" class=\"btn btn-primary btn-lg btn-block\" />\n");
       out.write("                                        </form>\n");
       out.write("\n");
