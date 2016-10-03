@@ -46,6 +46,8 @@ public class listaComentariosServlet extends HttpServlet {
         List<Comentario> lista = new ComentarioDAO().getTodosComentariosDeUmTopico(id_topico);
         
         request.setAttribute("criador", request.getSession().getAttribute("criador").toString());
+        request.setAttribute("titulo", request.getSession().getAttribute("titulo").toString());
+        request.setAttribute("conteudo", request.getSession().getAttribute("conteudo").toString());
         
         request.setAttribute("lista", lista );
         request.getRequestDispatcher("TelaExibeTopico.jsp").forward(request, response);

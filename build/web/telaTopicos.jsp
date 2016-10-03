@@ -80,10 +80,7 @@
             </div>
         </div>
 
-        <form class="text-center" action="exibeTopicos">
-            <input type="text" name="topico" placeholder="id" class="form-control text-center" />
-            <input type="submit" value="teste" class="btn btn-default btn-lg btn-block" />
-        </form>
+        
 
 
 

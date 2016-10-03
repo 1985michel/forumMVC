@@ -35,7 +35,10 @@ public class exibeTopicosServlet extends HttpServlet {
         TopicoDAO dao = new TopicoDAO();
         Topico t = dao.recuperar(id_topico);
         request.setAttribute("titulo", t.getTitulo());
-        //request.setAttribute("login", t.getLogin());
+        request.setAttribute("conteudo", t.getConteudo());
+        
+        request.getSession().setAttribute("titulo", t.getTitulo());
+        request.getSession().setAttribute("conteudo", t.getConteudo());
         request.getSession().setAttribute("id_topico", id_topico);
         request.getSession().setAttribute("criador", t.getLogin());
 

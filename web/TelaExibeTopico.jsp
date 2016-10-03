@@ -44,6 +44,8 @@
                                     <h3 class="text-center"><sub><b class=""><a href="">${titulo} <h5>por ${criador}</h5></a></b></sub><small><br><b class="text-uppercase"></b></small></h3>
                                 </div>
                                 <div class="panel-body">
+                                    <p>${conteudo}</p>
+                                    <hr>
                                     <table style="color:black" class="text-center">
                                         <tr class="text-center">
                                             <th>Usuário</th>
@@ -95,7 +97,7 @@
                             <div class="btn-group btn-group-justified" role="group" style="background-color:#124989; padding:10px;">
 
                                 <div class="btn-group" role="group">
-                                    <a href="telaInsereComentario.jsp"><input type="button" value="Comentar" class="btn btn-primary " /></a>
+                                    <a href="telaTopicos.jsp"><input type="button" value="Todos Topicos" class="btn btn-primary " /></a>
                                 </div>
                                 <div class="btn-group" role="group">
                                     <a href="telaTopicos.jsp"><input type="button" value="Ranking" class="btn btn-default " /></a>

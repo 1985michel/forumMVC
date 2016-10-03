@@ -93,10 +93,14 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                                    <h3 class=\"text-center\"><sub><b class=\"\"><a href=\"\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${titulo}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write(" <h5>por ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${login}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${criador}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</h5></a></b></sub><small><br><b class=\"text-uppercase\"></b></small></h3>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"panel-body\">\n");
+      out.write("                                    <p>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${conteudo}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</p>\n");
+      out.write("                                    <hr>\n");
       out.write("                                    <table style=\"color:black\" class=\"text-center\">\n");
       out.write("                                        <tr class=\"text-center\">\n");
       out.write("                                            <th>Usuário</th>\n");
@@ -150,7 +154,7 @@ public final class TelaExibeTopico_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                            <div class=\"btn-group btn-group-justified\" role=\"group\" style=\"background-color:#124989; padding:10px;\">\n");
       out.write("\n");
       out.write("                                <div class=\"btn-group\" role=\"group\">\n");
-      out.write("                                    <a href=\"telaInsereComentario.jsp\"><input type=\"button\" value=\"Comentar\" class=\"btn btn-primary \" /></a>\n");
+      out.write("                                    <a href=\"telaTopicos.jsp\"><input type=\"button\" value=\"Todos Topicos\" class=\"btn btn-primary \" /></a>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"btn-group\" role=\"group\">\n");
       out.write("                                    <a href=\"telaTopicos.jsp\"><input type=\"button\" value=\"Ranking\" class=\"btn btn-default \" /></a>\n");
