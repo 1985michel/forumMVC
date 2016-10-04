@@ -34,6 +34,7 @@ public class ComentarioDAO {
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro no CRUD" + ex);
         }
+        new Pontuadora().pontuaComentario(c.getLogin());
     }
 
     public List<Comentario> getTodosComentariosDeUmTopico(int id_topico) {

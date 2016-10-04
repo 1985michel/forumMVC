@@ -33,6 +33,7 @@ public class TopicoDAO {
         } catch (SQLException ex) {
             System.out.println("Ocorreu um erro no CRUD" + ex);
         }
+        new Pontuadora().pontuaCriacaoDeTopico(t.getLogin());
     }
 
     public List<Topico> getTodosTopicos() {

@@ -19,6 +19,10 @@ public class UsuarioDAO implements iUsuarioDAO {
 	public UsuarioDAO(CRUD crud) {
 		this.crud = crud;
 	}
+        
+        public UsuarioDAO(){
+            crud = new CRUD(new DbUser("postgres", "livre01"));
+        }
 
 	@Override
 	public void inserir(Usuario u){
@@ -71,7 +75,7 @@ public class UsuarioDAO implements iUsuarioDAO {
 		} catch (SQLException ex) {
 			System.out.println("Ocorreu um erro no CRUD" + ex);
 		}
-		System.out.println("Pontua��o registrada com Sucesso!");
+		System.out.println("Pontuação registrada com Sucesso!");
 
 	}
 
