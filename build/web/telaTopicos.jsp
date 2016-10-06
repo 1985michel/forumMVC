@@ -54,7 +54,7 @@
                                     for (Topico t : listaTopicos) {
                                         out.println("<tr><td >" + t.getId_topico() + "</td> "
                                                 + "<td><a href='/ForumMVC/exibeTopicos?topico="
-                                                +t.getId_topico() +"'> "
+                                                +t.getId_topico() +"  ' style='color:white;'> "
                                                 + t.getTitulo()
                                                 + "</a></td> "
                                                 + "<td>" + t.getLogin() + "</td></tr>");
@@ -69,7 +69,7 @@
                                     <a href="telaInsereTopico.jsp"><input type="button" value="Criar Tópico" class="btn btn-primary " /></a>
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <input type="button" value="Ver Ranking" class="btn btn-default " />
+                                    <a href="ranking.jsp"><input type="button" value="Ver Ranking" class="btn btn-default " /></a>
                                 </div>
                             </div>
 

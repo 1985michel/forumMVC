@@ -41,7 +41,7 @@
                             <div class="panel panel-default">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading">                            
-                                    <h3 class="text-center"><sub><b class=""><a href="">${titulo} <h5>por ${criador}</h5></a></b></sub><small><br><b class="text-uppercase"></b></small></h3>
+                                    <h3 class="text-center"><sub><b class=""><a style='color:black;' href="">${titulo} <h5>por ${criador}</h5></a></b></sub><small><br><b class="text-uppercase"></b></small></h3>
                                 </div>
                                 <div class="panel-body">
                                     <p>${conteudo}</p>

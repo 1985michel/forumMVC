@@ -1,17 +1,18 @@
 <%-- 
-    Document   : telaLogin
+    Document   : ranking
     Created on : 26/09/2016, 22:45:22
     Author     : michel
 --%>
 
+<%@page import="model.Usuario"%>
 <%@page import="model.ListadoraDeTopicos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Topico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="C" uri="http://java.sun.com/jstl/core_rt" %>
-<jsp:useBean id="dao" class="model.Topico"/>
-<jsp:useBean id="listadora" class="model.ListadoraDeTopicos"/>
+<jsp:useBean id="dao" class="model.UsuarioDAO"/>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,21 +44,24 @@
 
                             <table style="color:white" class="text-center">
                                 <tr class="text-center">
-                                    <th>Tópico nº</th>
-                                    <th>Título do Tópico</th>
-                                    <th>Criador</th>    
+                                    <th>Colocação</th>
+                                    <th>Nome</th>
+                                    <th>Login</th>
+                                    <th>Quantidade de Pontos</th>
                                 </tr>                               
 
                                 <%
                                     // ...
-                                    List<Topico> listaTopicos = listadora.getTodosTopicos();
-                                    for (Topico t : listaTopicos) {
-                                        out.println("<tr><td >" + t.getId_topico() + "</td> "
-                                                + "<td><a href='/ForumMVC/exibeTopicos?topico="
-                                                +t.getId_topico() +"  ' style='color:white;'> "
-                                                + t.getTitulo()
-                                                + "</a></td> "
-                                                + "<td>" + t.getLogin() + "</td></tr>");
+                                    List<Usuario> ranking = dao.ranking();
+                                    int i = 1;
+                                    for (Usuario u : ranking) {
+                                        
+                                        out.println("<tr><td >" + i + "</td> "
+                                                + "<td>" + u.getNome() + "</td>"
+                                                + "<td>" + u.getLogin() + "</td>"
+                                                + "<td>" + u.getPontos() + "</td>"
+                                                + "</tr>");
+                                        i++;
                                     }
                                 %>
 
@@ -66,11 +70,9 @@
                             <div class="btn-group btn-group-justified" role="group" style="background-color:#124989; padding:10px;">
 
                                 <div class="btn-group" role="group">
-                                    <a href="telaInsereTopico.jsp"><input type="button" value="Criar Tópico" class="btn btn-primary " /></a>
+                                    <a href="telaTopicos.jsp"><input type="button" value="Ver Tópicos" class="btn btn-primary " /></a>
                                 </div>
-                                <div class="btn-group" role="group">
-                                    <a href="ranking.jsp"><input type="button" value="Ver Ranking" class="btn btn-default " /></a>
-                                </div>
+                                
                             </div>
 
 
@@ -80,7 +82,7 @@
             </div>
         </div>
 
-        
+
 
 
 
