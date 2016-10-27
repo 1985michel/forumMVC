@@ -1,0 +1,6 @@
+<dataset>
+    <topico id_topico="0" titulo="First Topico" conteudo="Primeiro topico para testes" login="JOAO"/>
+    <topico id_topico="1" titulo="Second Topico" conteudo="Segundo topico para testes" login="MARIA"/>
+    <topico id_topico="2" titulo="Terceiro Topico" conteudo="Terceiro topico para testes" login="JOAO"/>   
+</dataset>
+
