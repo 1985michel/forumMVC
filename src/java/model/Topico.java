@@ -5,66 +5,73 @@
  */
 package model;
 
-
 public class Topico {
 
-	private int id_topico;
-	private String titulo;
-	private String conteudo;
-	private String login;
-	
-	public Topico(){}
-	
-	public Topico(String titulo, String conteudo, String login) {
-		super();
-		this.id_topico = 0;
-		this.titulo = titulo;
-		this.conteudo = conteudo;
-		this.login = login;
-	}
+    private int id_topico;
+    private String titulo;
+    private String conteudo;
+    private String login;
 
-	public Topico(int id_topico, String titulo, String conteudo, String login) {
-		super();
-		this.id_topico = id_topico;
-		this.titulo = titulo;
-		this.conteudo = conteudo;
-		this.login = login;
-	}
+    public Topico() {
+    }
 
-	public int getId_topico() {
-		return id_topico;
-	}
+    public Topico(String titulo, String conteudo, String login) {
+        super();
+        this.id_topico = 0;
+        this.titulo = titulo;
+        this.conteudo = conteudo;
+        this.login = login;
+    }
 
-	public void setId_topico(int id_topico) {
-		this.id_topico = id_topico;
-	}
+    public Topico(int id_topico, String titulo, String conteudo, String login) {
+        super();
+        this.id_topico = id_topico;
+        this.titulo = titulo;
+        this.conteudo = conteudo;
+        this.login = login;
+    }
 
-	public String getTitulo() {
-		return titulo;
-	}
+    public int getId_topico() {
+        return id_topico;
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    public void setId_topico(int id_topico) {
+        this.id_topico = id_topico;
+    }
 
-	public String getConteudo() {
-		return conteudo;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public void setConteudo(String conteudo) {
-		this.conteudo = conteudo;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public String getLogin() {
-		return login;
-	}
+    public String getConteudo() {
+        return conteudo;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	
-	
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
+    }
 
-	
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Override
+    public boolean equals(Object a) {
+       Topico o = (Topico) a;
+       if(this.getConteudo().equalsIgnoreCase(o.getConteudo()) &&
+               this.getLogin().equalsIgnoreCase(o.getLogin())&&
+               this.getTitulo().equalsIgnoreCase(o.getTitulo()))
+               return true;
+       
+       return false;
+    }
+
 }
-

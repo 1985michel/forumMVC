@@ -18,7 +18,9 @@ import model.Topico;
 import model.TopicoDAO;
 import model.UsuarioDAO;
 import model.Usuario;
+import org.dbunit.dataset.DataSetException;
 import org.junit.After;
+import org.junit.AfterClass;
 
 /**
  *
@@ -61,32 +63,40 @@ public class TesteTopicoDAO {
                 assertEquals("Segundo topico para testes",lista.get(0).getConteudo());
 	}
         
+        
         @Test
 	public void testeInsereNovoTopico() throws SQLException, Exception {
 		Topico topico = new Topico(2,"Terceiro Topico", "Terceiro topico para testes", "JOAO");
 		new TopicoDAO().inserir(topico);
 		IDataSet currentDataSet = jdt.getConnection().createDataSet();
 		ITable currentTable = currentDataSet.getTable("Topico");
+                
 		
 		FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
 		IDataSet expectedDataSet = (loader.load("/verificaTopico.xml"));
 		ITable expectedTable = expectedDataSet.getTable("Topico");
+                
+                String[] colIgnorada = {"id_topico"};
 		
-		Assertion.assertEquals(expectedTable, currentTable);
+		Assertion.assertEqualsIgnoreCols(expectedTable, currentTable,colIgnorada);
 
 	}
         
-        @After
-        public void cleanUp() throws Exception{
-		//crud = new CRUD(new DbUser("michel", "12345"));
-		//jdt = new JdbcDatabaseTester("org.hsqldb.jdbcDriver", crud.address, crud.getDbUser().getLogin(), crud.getDbUser().getSenha());
-		
-		
-		crud = new CRUD(new DbUser("postgres", "livre01"));
-		jdt = new JdbcDatabaseTester("org.postgresql.Driver", crud.address, crud.getDbUser().getLogin(), crud.getDbUser().getSenha());
-		FlatXmlDataFileLoader loader = new FlatXmlDataFileLoader();
-		jdt.setDataSet(loader.load("/fimTopico.xml"));
-		jdt.onSetup();
+        @Test
+	public void testeRecuperarTopico() throws DataSetException {
+            
+		//id_topico="1" titulo="Second Topico" conteudo="Segundo topico para testes" login="MARIA"
+                Topico topicoEsperado = new Topico("Second Topico", "Segundo topico para testes", "MARIA");
+                
+                Topico topicoFromDB = new TopicoDAO().recuperar(1);
+                
+                assertEquals(true, topicoEsperado.equals(topicoFromDB));
+                
+                
+                
 	}
-    
+        
+        
+        
+
 }
